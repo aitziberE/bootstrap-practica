@@ -1,0 +1,7 @@
+.main{
+    display:flex;
+}
+.card{
+    margin-top: 10px;
+    margin-left:10px;
+}

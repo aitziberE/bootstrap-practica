@@ -1,26 +1,24 @@
-//window.onload = function() {};
-//recoger nfo localstorage en array, recorrer, crear tantas cartas y meterle los atributos
-
 const main=document.querySelector(".main")
 
-/* main.appendChild.innerHTML(` <div class="card" style="width: 18rem;">
-<img src="./assets/images/avatar-thinking-svgrepo-com.svg" class="card-img-top" alt="avatar">
-<div class="card-body">
-  <h5 class="card-title">set name</h5>
-  <p class="card-text">set mail</p>
-  <a href="#" class="btn btn-primary">Go somewhere</a>
-</div>
-</div>`) */
+window.onload = function() {
+  if(localStorage.length!==0){
+    for(let i=0; i<localStorage.length; i++) {
+      const data = JSON.parse(localStorage.getItem(localStorage.key(i)));
 
-const elemento = document.createElement('p')
-main.appendChild(elemento)
+      const cardElement = document.createElement('div');
+      cardElement.classList.add('card');
+      cardElement.style.width = '18rem';
+      
+      cardElement.innerHTML = `
+        <img src="./assets/images/avatar-thinking-svgrepo-com.svg" class="card-img-top" alt="avatar">
+        <div class="card-body">
+            <h5 class="card-title">${data.name}</h5>
+            <p class="card-text">${data.mail}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      `;
 
-    
-main.lastElementChild.innerHTML = ` <div class="card" style="width: 18rem;">
-    <img src="./assets/images/avatar-thinking-svgrepo-com.svg" class="card-img-top" alt="avatar">
-    <div class="card-body">
-      <h5 class="card-title">set name</h5>
-      <p class="card-text">set mail</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-    </div>`
+      main.appendChild(cardElement);
+    }
+  }
+}

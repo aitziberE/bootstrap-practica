@@ -10,14 +10,14 @@ const btnSubmit=document.getElementById('btnSubmit')
 btnSubmit.addEventListener('click', onSubmit)
 
 let message
-let i=0
+
 
 function onSubmit(event){
     event.preventDefault()
 
     if(validateInput()){
         
-        localStorage.setItem(`user ${i}`, JSON.stringify({
+        localStorage.setItem(`user ${userName.value}`, JSON.stringify({
             name: userName.value,
             mail: userMail.value,
             passwd: userPasswd.value
@@ -28,7 +28,6 @@ function onSubmit(event){
             messageSpace.innerHTML=``
             window.location.href = './user.html'
         }, 2000)
-        i++
     }
     else{
         messageSpace.innerHTML=`<div class="alert alert-primary" role="alert">${message}</div>`
